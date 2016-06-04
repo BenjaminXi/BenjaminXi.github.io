@@ -3,17 +3,18 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Wabi Sabi</title>
+  <title>产品元认知 | Wabi Sabi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wabi Sabi">
-<meta property="og:url" content="http://benja.info/index.html">
+  <meta name="description" content="启示录读后感">
+<meta property="og:type" content="article">
+<meta property="og:title" content="产品元认知">
+<meta property="og:url" content="http://benja.info/2016/06/04/产品元认知/index.html">
 <meta property="og:site_name" content="Wabi Sabi">
-<meta property="og:description">
+<meta property="og:description" content="启示录读后感">
+<meta property="og:updated_time" content="2016-06-04T08:45:07.156Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Wabi Sabi">
-<meta name="twitter:description">
+<meta name="twitter:title" content="产品元认知">
+<meta name="twitter:description" content="启示录读后感">
   
     <link rel="alternate" href="/atom.xml" title="Wabi Sabi" type="application/atom+xml">
   
@@ -62,9 +63,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-产品元认知" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-产品元认知" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/04/产品元认知/" class="article-date">
   <time datetime="2016-06-04T08:38:59.000Z" itemprop="datePublished">2016-06-04</time>
@@ -81,8 +80,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/04/产品元认知/">产品元认知</a>
+    <h1 class="article-title" itemprop="name">
+      产品元认知
     </h1>
   
 
@@ -110,76 +109,19 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-互联网协议浅析" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/06/01/互联网协议浅析/" class="article-date">
-  <time datetime="2016-05-31T16:00:00.000Z" itemprop="datePublished">2016-06-01</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/网络/">网络</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/06/01/互联网协议浅析/">互联网协议浅析</a>
-    </h1>
+    <a href="/2016/06/01/互联网协议浅析/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">互联网协议浅析</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>学通信已有5年有余，计算机网络虽在大三为应付考试，理解并不深。当初也是为了学好这门功课，硬是在亚洲最长的图书馆里啃着一本巨厚的《TCP/IP协议族》。</p>
-<p>最近搞出了一个博客benja.info，欣喜有余，总是不由自主地在地址栏敲入这几个英文字母，看看会发生什么神奇的事情。虽早已知道会发生什么，但当她弹出的那一刻，还是会欣喜不已。</p>
-<p>时间过滤后的才是精华，这句话用在此处也很恰当。当初厚厚的计算机网络，现在想起来的也就是OSI参考模型和5层网络协议这组关键词能留在记忆中。那不妨顺着这个框架走下去，聊聊今天的理解。</p>
-<p>互联网的5层模型，从底层到高层分别为物理层，数据链路层，网络层，传输层和应用层。那么我们不禁要问，为什么是5层，而不是6层、7层？这5层都是干什么的，可以拿掉一个么？</p>
-<p>带着这些问题，我们从最简单的点到点模型开始浅析。一台电脑要与另一台电脑通信，我们可以用一根网线来连接，也可以通过无线来连接，这种有发送方和接收方是一对一的，就是物理层要实现的功能，只管发送0和1的比特信号。</p>
-<p>如果有三台电脑要相互通信，单纯利用网线已经无法实现，就得考虑如何将比特信号发送给指定电脑，那么就需要写入接收方的地址。每台主机都有一个网卡，网卡的MAC地址就是唯一定义的地址，是固定不变的。那好了，有了MAC地址，我们就可以发送数据包了，我们习惯在数据报的头部插入地址，尾部插入数据。有了MAC地址，如何发送给接受者呢？采用广播的方法给子网内部的所有主机发送，主机通过比较来判断是否接受。这就是数据链路层。</p>
-<p>当电脑的数量越来越多，这种广播的方式就有点低效和浪费网络资源了。电脑就开始形成各个小的网络，成为子网，而MAC地址本身不可更改的特性造就了其局限性，发明了网络地址来定义主机，也就是IP地址。IP地址有两部分组成，前面代表子网号，后面代表主机号。IP协议的一个作用就是为计算机分配IP地址，另一个作用就是确定IP地址归属与哪个子网。后者依赖于另一参数，叫做子网掩码。只有当两个IP地址与子网掩码进行与运算后，结果相同才属于一个子网。那么，当一台电脑要与另一台电脑通信时，知道IP地址是不够的，还需要知道MAC地址，怎么由IP地址得到MAC地址呢？当一个子网内部时，使用ARP协议（地址解析协议）；当不在一个子网中，让网关去处理。这就是网络层。</p>
-<p>当一台电脑能够连接到另一台电脑时，我们就要考虑程序间是如何通信的。计算机都是多进程处理，一边聊QQ，一边浏览网页，如何确保接收到的数据包是给QQ呢，还是Chrome呢？这是我们就需要一个参数来定义进程间的通信，就是端口号。一种通信方式是把端口号放入数据报中，就可以进行传输，这种不可靠的传输成为UDP协议传输。还有一种为协议引入了确认机制，就是著名的三次握手协议，TCP协议，其实就是有确认机制的UDP。这就是传输层。</p>
-<p>当应用程序能够通过传输协议收到数据包，就可以解读了。但是数据格式各种各种，就需要一套规范，不同的应用程序就有不同的数据规范，这就是应用层。比如Email，WWW等。</p>
-<p>举例来说，当我们要访问benja.info时，地址栏敲入http：//benja.info，这种格式为URL格式，前面的http协议是超文本传送协议，后面的benja.info为域名地址。</p>
-<ol>
-<li><p>浏览器会分析URL链接，向DNS服务器请求解析benja.info的域名，这里的DNS服务器是DNSPod。</p>
-</li>
-<li><p>DNSPod会返回一个IP地址，这个地址github pages，我么在这上面架设了仓库，存放博客程序。</p>
-</li>
-<li><p>浏览器与服务器建立TCP连接。</p>
-</li>
-<li><p>浏览器发出请求显示页面的命令。</p>
-</li>
-<li><p>github pages服务器给出响应，把html文件发送给浏览器。</p>
-</li>
-<li><p>释放TCP连接。</p>
-</li>
-<li><p>浏览器显示html文本。</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://benja.info/2016/06/01/互联网协议浅析/" data-id="cip0wzomt00005kos0izhb8tq" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
   
 </article>
-
-
-  
 
 </section>
         
