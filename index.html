@@ -68,6 +68,133 @@
     <div class="outer">
       <section id="main">
   
+    <article id="post-Hexo利用swiftype为landscape-plus添加站内搜索" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" class="article-date">
+  <time datetime="2016-06-06T08:41:37.000Z" itemprop="datePublished">2016-06-06</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/">Hexo利用swiftype为landscape-plus添加站内搜索</a>
+    </h1>
+  
+
+      </header>
+	  
+	   
+      <div class="busuanzi_container_page_pv"> 
+        <span class="head-plus">   
+			<i class="fa fa-user"></i>
+        <span id="busuanzi_value_page_pv">
+			<i class="fa fa-spinner fa-spin"></i>
+        </span>次访问   </span>  
+        <span class="head-plus">  
+			<i class="fa fa-comments"></i>
+        <span class="ds-thread-count" data-thread-key="2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/">
+			<i class="fa fa-spinner fa-spin"></i></span>条评论  
+        </span> 
+      </div> 
+      
+	  
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="swiftype-创建搜索引擎"><a href="#swiftype-创建搜索引擎" class="headerlink" title="swiftype 创建搜索引擎"></a>swiftype 创建搜索引擎</h2><p>这部分网上的教程很多，按照<a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>官网的指引就可以完成，由于官网的页面经常更新，就不帖图了，走到最后一步，出现install code，就可以进行下面的步骤了。</p>
+<h2 id="hexo的landscape-plus主题配置"><a href="#hexo的landscape-plus主题配置" class="headerlink" title="hexo的landscape-plus主题配置"></a>hexo的landscape-plus主题配置</h2><p>由于网上暂时还没有<a href="https://github.com/xiangming/landscape-plus" target="_blank" rel="external">landscape-plus</a>的站内搜索配置教程，所以贴出本教程供大家参考。</p>
+<ul>
+<li><p>\themes\landscpe-plus_config.yml添加如下代码： <br></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swift_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
+<p>\source\新建search文件夹，在\source\search\新建index.md,添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layout: search</span><br><span class="line">title: search</span><br><span class="line">----</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在\themes\landscape-plus\layout_partial\header.ejs文件中的代码块</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;search-form-wrap&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>后面添加如下代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">	&lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; id=&quot;search&quot; class=&quot;st-default-search-input&quot; maxlength=&quot;20&quot; placeholder=&quot;search&quot; /&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;% &#125; else &#123; %&gt;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>在\themes\landscape-plus\layout_partial\下新建search.ejs，添加如下代码,注意更换你的install code：</p>
+<pre><code>&lt;% if(theme.swift_search.enable) { %&gt;
+&lt;div  id=&quot;container&quot; class=&quot;page&quot;&gt;
+&lt;div id=&quot;st-results-container&quot; class=&quot;st-search-container&quot; style=&quot;width:80%&quot;&gt;正在加载搜索结果，请稍等。&lt;/div&gt;
+&lt;style&gt;.st-result-text {
+background: #fafafa;
+display: block;
+border-left: 0.5em solid #ccc;
+-webkit-transition: border-left 0.45s;
+-moz-transition: border-left 0.45s;
+-o-transition: border-left 0.45s;
+-ms-transition: border-left 0.45s;
+transition: border-left 0.45s;
+padding: 0.5em;
+}
+@media only screen and (min-width: 768px) {
+.st-result-text {
+  padding: 1em;
+}
+}
+.st-result-text:hover {
+border-left: 0.5em solid #ea6753;
+}
+.st-result-text h3 a{
+color: #2ca6cb;
+line-height: 1.5;
+font-size: 22px;
+}
+.st-snippet em {
+font-weight: bold;
+color: #ea6753;
+}&lt;/style&gt;
+&lt;！--下面的代码要换成swiftype的install code--！&gt;
+&lt;script type=&quot;text/javascript&quot;&gt;
+(function(w,d,t,u,n,s,e){w[&apos;SwiftypeObject&apos;]=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,&apos;script&apos;,&apos;//s.swiftypecdn.com/install/v2/st.js&apos;,&apos;_st&apos;);
+
+_st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
+&lt;/script&gt;
+&lt;% } %&gt;
+</code></pre></li>
+<li>在\themes\landscape-plus\layout_partial\footer.ejs，在最后一个标签之前把install code粘贴进去，就是上面4中script部分。<br></li>
+<li>然后就是hexo g和hexo d了，祝大家成功。</li>
+</ul>
+<p>参考：</p>
+<ul>
+<li><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">JerryFu’s Blog</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://benja.info/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" data-id="cip3s4i8k00046cos5cdje011" class="article-share-link" data-share="baidu" data-title="Hexo利用swiftype为landscape-plus添加站内搜索">分享到</a>
+      
+
+      
+        <a href="http://benja.info/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/">Hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/landscape-plus/">landscape-plus</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/swiftype/">swiftype</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/站内搜索/">站内搜索</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-产品元认知" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/06/04/产品元认知/" class="article-date">
@@ -125,7 +252,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/04/产品元认知/" data-id="cip3rgpr40003lwosly79cjz9" class="article-share-link" data-share="baidu" data-title="产品元认知">分享到</a>
+        <a data-url="http://benja.info/2016/06/04/产品元认知/" data-id="cip3s4i8n00056cosx691cyus" class="article-share-link" data-share="baidu" data-title="产品元认知">分享到</a>
       
 
       
@@ -213,7 +340,7 @@
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/01/互联网协议浅析/" data-id="cip3rgpr10002lwoss85wyo36" class="article-share-link" data-share="baidu" data-title="互联网协议浅析">分享到</a>
+        <a data-url="http://benja.info/2016/06/01/互联网协议浅析/" data-id="cip3s4i8800006cosc6rb8dvh" class="article-share-link" data-share="baidu" data-title="互联网协议浅析">分享到</a>
       
 
       
@@ -237,20 +364,34 @@
   <div class="widget-wrap">
     <h3 class="widget-title">分类</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/产品/">产品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/产品/">产品</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/网络/">网络</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Hexo/">Hexo</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/landscape-plus/">landscape-plus</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/swiftype/">swiftype</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/站内搜索/">站内搜索</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
   
     
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Hexo/" style="font-size: 10px;">Hexo</a> <a href="/tags/landscape-plus/" style="font-size: 10px;">landscape-plus</a> <a href="/tags/swiftype/" style="font-size: 10px;">swiftype</a> <a href="/tags/站内搜索/" style="font-size: 10px;">站内搜索</a>
+    </div>
+  </div>
+
   
     
   <div class="widget-wrap">
     <h3 class="widget-title">归档</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">六月 2016</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -260,6 +401,10 @@
     <h3 class="widget-title">近期文章</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/">Hexo利用swiftype为landscape-plus添加站内搜索</a>
+          </li>
         
           <li>
             <a href="/2016/06/04/产品元认知/">产品元认知</a>

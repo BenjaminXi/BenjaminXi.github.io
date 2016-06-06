@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://benja.info/"/>
-  <updated>2016-06-04T08:51:25.606Z</updated>
+  <updated>2016-06-06T13:26:33.231Z</updated>
   <id>http://benja.info/</id>
   
   <author>
@@ -14,6 +14,97 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Hexo利用swiftype为landscape-plus添加站内搜索</title>
+    <link href="http://benja.info/2016/06/06/Hexo%E5%88%A9%E7%94%A8swiftype%E4%B8%BAlandscape-plus%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/"/>
+    <id>http://benja.info/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/</id>
+    <published>2016-06-06T08:41:37.000Z</published>
+    <updated>2016-06-06T13:26:33.231Z</updated>
+    
+    <content type="html">&lt;h2 id=&quot;swiftype-创建搜索引擎&quot;&gt;&lt;a href=&quot;#swiftype-创建搜索引擎&quot; class=&quot;headerlink&quot; title=&quot;swiftype 创建搜索引擎&quot;&gt;&lt;/a&gt;swiftype 创建搜索引擎&lt;/h2&gt;&lt;p&gt;这部分网上的教程很多，按照&lt;a href=&quot;https://swiftype.com/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;swiftype&lt;/a&gt;官网的指引就可以完成，由于官网的页面经常更新，就不帖图了，走到最后一步，出现install code，就可以进行下面的步骤了。&lt;/p&gt;
+&lt;h2 id=&quot;hexo的landscape-plus主题配置&quot;&gt;&lt;a href=&quot;#hexo的landscape-plus主题配置&quot; class=&quot;headerlink&quot; title=&quot;hexo的landscape-plus主题配置&quot;&gt;&lt;/a&gt;hexo的landscape-plus主题配置&lt;/h2&gt;&lt;p&gt;由于网上暂时还没有&lt;a href=&quot;https://github.com/xiangming/landscape-plus&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;landscape-plus&lt;/a&gt;的站内搜索配置教程，所以贴出本教程供大家参考。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;\themes\landscpe-plus_config.yml添加如下代码： &lt;br&gt;&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;swift_search:&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;  enable: true&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;\source\新建search文件夹，在\source\search\新建index.md,添加如下代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;layout: search&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;title: search&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;----&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在\themes\landscape-plus\layout_partial\header.ejs文件中的代码块&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;div id=&amp;quot;search-form-wrap&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;后面添加如下代码：&lt;/p&gt;
+&lt;figure class=&quot;highlight plain&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;4&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;5&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;% if (theme.swift_search.enable)&amp;#123; %&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;form class=&amp;quot;search&amp;quot; action=&amp;quot;&amp;lt;%- config.root %&amp;gt;search/index.html&amp;quot; method=&amp;quot;get&amp;quot; accept-charset=&amp;quot;utf-8&amp;quot;&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;input type=&amp;quot;text&amp;quot; id=&amp;quot;search&amp;quot; class=&amp;quot;st-default-search-input&amp;quot; maxlength=&amp;quot;20&amp;quot; placeholder=&amp;quot;search&amp;quot; /&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;	&amp;lt;/form&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&amp;lt;% &amp;#125; else &amp;#123; %&amp;gt;&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;在\themes\landscape-plus\layout_partial\下新建search.ejs，添加如下代码,注意更换你的install code：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;% if(theme.swift_search.enable) { %&amp;gt;
+&amp;lt;div  id=&amp;quot;container&amp;quot; class=&amp;quot;page&amp;quot;&amp;gt;
+&amp;lt;div id=&amp;quot;st-results-container&amp;quot; class=&amp;quot;st-search-container&amp;quot; style=&amp;quot;width:80%&amp;quot;&amp;gt;正在加载搜索结果，请稍等。&amp;lt;/div&amp;gt;
+&amp;lt;style&amp;gt;.st-result-text {
+background: #fafafa;
+display: block;
+border-left: 0.5em solid #ccc;
+-webkit-transition: border-left 0.45s;
+-moz-transition: border-left 0.45s;
+-o-transition: border-left 0.45s;
+-ms-transition: border-left 0.45s;
+transition: border-left 0.45s;
+padding: 0.5em;
+}
+@media only screen and (min-width: 768px) {
+.st-result-text {
+  padding: 1em;
+}
+}
+.st-result-text:hover {
+border-left: 0.5em solid #ea6753;
+}
+.st-result-text h3 a{
+color: #2ca6cb;
+line-height: 1.5;
+font-size: 22px;
+}
+.st-snippet em {
+font-weight: bold;
+color: #ea6753;
+}&amp;lt;/style&amp;gt;
+&amp;lt;！--下面的代码要换成swiftype的install code--！&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+(function(w,d,t,u,n,s,e){w[&amp;apos;SwiftypeObject&amp;apos;]=n;w[n]=w[n]||function(){
+(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+})(window,document,&amp;apos;script&amp;apos;,&amp;apos;//s.swiftypecdn.com/install/v2/st.js&amp;apos;,&amp;apos;_st&amp;apos;);
+
+_st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;apos;2.0.0&amp;apos;);
+&amp;lt;/script&amp;gt;
+&amp;lt;% } %&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;li&gt;在\themes\landscape-plus\layout_partial\footer.ejs，在最后一个标签之前把install code粘贴进去，就是上面4中script部分。&lt;br&gt;&lt;/li&gt;
+&lt;li&gt;然后就是hexo g和hexo d了，祝大家成功。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;JerryFu’s Blog&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;swiftype-创建搜索引擎&quot;&gt;&lt;a href=&quot;#swiftype-创建搜索引擎&quot; class=&quot;headerlink&quot; title=&quot;swiftype 创建搜索引擎&quot;&gt;&lt;/a&gt;swiftype 创建搜索引擎&lt;/h2&gt;&lt;p&gt;这部分网上的教程很多，按照&lt;a hr
+    
+    </summary>
+    
+      <category term="Hexo" scheme="http://benja.info/categories/Hexo/"/>
+    
+    
+      <category term="Hexo" scheme="http://benja.info/tags/Hexo/"/>
+    
+      <category term="swiftype" scheme="http://benja.info/tags/swiftype/"/>
+    
+      <category term="landscape-plus" scheme="http://benja.info/tags/landscape-plus/"/>
+    
+      <category term="站内搜索" scheme="http://benja.info/tags/%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/"/>
+    
+  </entry>
   
   <entry>
     <title>产品元认知</title>

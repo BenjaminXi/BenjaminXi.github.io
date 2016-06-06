@@ -7,4 +7,5 @@
 
 ###2016.6.6
 * 访客流量统计高亮，感谢[Yohann](https://violetlove.github.io/)
-* reame在本地/public编辑可避免被覆盖
+* README文件在本地/public编辑可避免被覆盖
+* 添加[Swiftype](https://swiftype.com/)站内搜索
