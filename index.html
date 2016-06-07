@@ -95,92 +95,22 @@
       </header>
 	  
 	   
-      <div class="busuanzi_container_page_pv"> 
-        <span class="head-plus">   
-			<i class="fa fa-user"></i>
-        <span id="busuanzi_value_page_pv">
-			<i class="fa fa-spinner fa-spin"></i>
-        </span>次访问   </span>  
-        <span class="head-plus">  
-			<i class="fa fa-comments"></i>
-        <span class="ds-thread-count" data-thread-key="2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/">
-			<i class="fa fa-spinner fa-spin"></i></span>条评论  
-        </span> 
-      </div> 
-      
+	  
 	  
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="swiftype-创建搜索引擎"><a href="#swiftype-创建搜索引擎" class="headerlink" title="swiftype 创建搜索引擎"></a>swiftype 创建搜索引擎</h2><p>这部分网上的教程很多，按照<a href="https://swiftype.com/" target="_blank" rel="external">swiftype</a>官网的指引就可以完成，由于官网的页面经常更新，就不帖图了，走到最后一步，出现install code，就可以进行下面的步骤了。</p>
-<h2 id="hexo的landscape-plus主题配置"><a href="#hexo的landscape-plus主题配置" class="headerlink" title="hexo的landscape-plus主题配置"></a>hexo的landscape-plus主题配置</h2><p>由于网上暂时还没有<a href="https://github.com/xiangming/landscape-plus" target="_blank" rel="external">landscape-plus</a>的站内搜索配置教程，所以贴出本教程供大家参考。</p>
-<ul>
-<li><p>\themes\landscpe-plus_config.yml添加如下代码： <br></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">swift_search:</span><br><span class="line">  enable: true</span><br></pre></td></tr></table></figure>
-<p>\source\新建search文件夹，在\source\search\新建index.md,添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">layout: search</span><br><span class="line">title: search</span><br><span class="line">----</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在\themes\landscape-plus\layout_partial\header.ejs文件中的代码块</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div id=&quot;search-form-wrap&quot;&gt;</span><br></pre></td></tr></table></figure>
-<p>后面添加如下代码：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;% if (theme.swift_search.enable)&#123; %&gt;</span><br><span class="line">	&lt;form class=&quot;search&quot; action=&quot;&lt;%- config.root %&gt;search/index.html&quot; method=&quot;get&quot; accept-charset=&quot;utf-8&quot;&gt;</span><br><span class="line">	&lt;input type=&quot;text&quot; id=&quot;search&quot; class=&quot;st-default-search-input&quot; maxlength=&quot;20&quot; placeholder=&quot;search&quot; /&gt;</span><br><span class="line">	&lt;/form&gt;</span><br><span class="line">&lt;% &#125; else &#123; %&gt;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>在\themes\landscape-plus\layout_partial\下新建search.ejs，添加如下代码,注意更换你的install code：</p>
-<pre><code>&lt;% if(theme.swift_search.enable) { %&gt;
-&lt;div  id=&quot;container&quot; class=&quot;page&quot;&gt;
-&lt;div id=&quot;st-results-container&quot; class=&quot;st-search-container&quot; style=&quot;width:80%&quot;&gt;正在加载搜索结果，请稍等。&lt;/div&gt;
-&lt;style&gt;.st-result-text {
-background: #fafafa;
-display: block;
-border-left: 0.5em solid #ccc;
--webkit-transition: border-left 0.45s;
--moz-transition: border-left 0.45s;
--o-transition: border-left 0.45s;
--ms-transition: border-left 0.45s;
-transition: border-left 0.45s;
-padding: 0.5em;
-}
-@media only screen and (min-width: 768px) {
-.st-result-text {
-  padding: 1em;
-}
-}
-.st-result-text:hover {
-border-left: 0.5em solid #ea6753;
-}
-.st-result-text h3 a{
-color: #2ca6cb;
-line-height: 1.5;
-font-size: 22px;
-}
-.st-snippet em {
-font-weight: bold;
-color: #ea6753;
-}&lt;/style&gt;
-&lt;！--下面的代码要换成swiftype的install code--！&gt;
-&lt;script type=&quot;text/javascript&quot;&gt;
-(function(w,d,t,u,n,s,e){w[&apos;SwiftypeObject&apos;]=n;w[n]=w[n]||function(){
-(w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
-e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
-})(window,document,&apos;script&apos;,&apos;//s.swiftypecdn.com/install/v2/st.js&apos;,&apos;_st&apos;);
-
-_st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
-&lt;/script&gt;
-&lt;% } %&gt;
-</code></pre></li>
-<li>在\themes\landscape-plus\layout_partial\footer.ejs，在最后一个标签之前把install code粘贴进去，就是上面4中script部分。<br></li>
-<li>然后就是hexo g和hexo d了，祝大家成功。</li>
-</ul>
-<p>参考：</p>
-<ul>
-<li><a href="http://www.jerryfu.net/post/search-engine-for-hexo-with-swiftype-v2.html" target="_blank" rel="external">JerryFu’s Blog</a></li>
-</ul>
-
+        <h2 id="swiftype-创建搜索引擎"><a href="#swiftype-创建搜索引擎" class="headerlink" title="swiftype 创建搜索引擎"></a>swiftype 创建搜索引擎</h2><p>这部分网上的教程很多，按照<a href="https://swiftype.com/">swiftype</a>官网的指引就可以完成，由于官网的页面经常更新，就不帖图了，走到最后一步，出现install code，就可以进行下面的步骤了。<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" data-id="cip5f5zu100027gosu3nkvtu4" class="article-share-link" data-share="baidu" data-title="Hexo利用swiftype为landscape-plus添加站内搜索">分享到</a>
+        <a data-url="http://benja.info/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" data-id="cip5fhin00006hgosxyhuht8c" class="article-share-link" data-share="baidu" data-title="Hexo利用swiftype为landscape-plus添加站内搜索">分享到</a>
       
 
       
@@ -222,19 +152,7 @@ _st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
       </header>
 	  
 	   
-      <div class="busuanzi_container_page_pv"> 
-        <span class="head-plus">   
-			<i class="fa fa-user"></i>
-        <span id="busuanzi_value_page_pv">
-			<i class="fa fa-spinner fa-spin"></i>
-        </span>次访问   </span>  
-        <span class="head-plus">  
-			<i class="fa fa-comments"></i>
-        <span class="ds-thread-count" data-thread-key="2016/06/04/产品元认知/">
-			<i class="fa fa-spinner fa-spin"></i></span>条评论  
-        </span> 
-      </div> 
-      
+	  
 	  
     
     <div class="article-entry" itemprop="articleBody">
@@ -244,17 +162,17 @@ _st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
 <p>这周花6.5个小时看完了启示录，对产品经理有了模糊的认识。刚开始接触这本书，是本着了解产品经理的需求，再加上很多伟大的产品经理的光环。回想过往，那些产品经理的发布会总是让人兴奋，产品的魅力不止其本身，是产品经理为其注入灵魂，定义产品。这本书讲的就是定义产品之路上要面对的人和事。</p>
 <p>产品三板斧</p>
 <hr>
-<p>这本书给我的，是框架式的认知。从人员、流程和产品三个部分，讲述了产品团队、产品开发和产品特征。在人员这部分，带给我的是颠覆性的认识，产品管理不是产品营销，产品管理也不是项目管理。此外，产品团队中产品管理与产品设计、软件开发是怎样的关系也很重要。其实，人员这一部分，概括为一点，是产品经理要与团队中的其他角色的分工，要求的是产品经理的团队合作能力。</p>
-<p>这本书给我的，是框架式的认知。从人员、流程和产品三个部分，讲述了产品团队、产品开发和产品特征。在人员这部分，带给我的是颠覆性的认识，产品管理不是产品营销，产品管理也不是项目管理。此外，产品团队中产品管理与产品设计、软件开发是怎样的关系也很重要。其实，人员这一部分，概括为一点，是产品经理要与团队中的其他角色的分工，要求的是产品经理的团队合作能力。</p>
-<p>在流程这部分，讲的产品开发的流程。软件开发有两个阶段：定义产品和开发产品。第一阶段探索产品，第二个阶段强调执行。定义产品阶段，包含三步，第一步评估产品机会，这一步只讨论待解决的问题，不涉及具体解决方案。要讨论的问题有产品的价值、目标市场、竞争优势、营销策略等等。第二步就是定义产品，这一步涉及找出解决方案，与用户体验设计师制作产品原型。第三步就是验证产品，包括通过真实用户验证产品的价值和可用性，和开发人员验证产品的可行性。产品经理负责的定义产品阶段已经完成，剩下的就是交给开发团队按照最终的产品原型开发产品，项目管理则负责开发阶段的计划和执行。</p>
-<p>在产品这部分，讲的是产品的吸引力法则。优秀的产品都是一样的，都是有共性的。苹果作为近三十年最优秀的科技产品，有很多值得学习的经验，我把她总结为四层服务模型，从底层到顶层依次为硬件、软件、用户体验和情感。具体来说，底层为上一层服务，最终的目的是满足用户的情感需求。要想抓住用户的情感需求，就得关注那些情感需求最强烈的消费者。非理性消费者作为大众群体中情绪最强烈的群体，当孤独、愤怒的情绪放大后，会导致非理性的消费行为。从马斯洛需求层次分析理论来讲，越是能抓住底层的需求，越是能创造出有吸引力的产品。满足情感需求讲的是产品的价值，除此之外，产品的有用性体现在用户体验设计上。好的用户体验是既实用，又美观，这就需要好的交互设计和视觉设计。</p>
-<p>产品之路，才刚刚开始。想要的越多，得到的越少。</p>
-
+<p>这本书给我的，是框架式的认知。
+        
+          <p class="article-more-link">
+            <a href="/2016/06/04/产品元认知/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/04/产品元认知/" data-id="cip5f5zu300037goszz75yonq" class="article-share-link" data-share="baidu" data-title="产品元认知">分享到</a>
+        <a data-url="http://benja.info/2016/06/04/产品元认知/" data-id="cip5fhimt0003hgosoa7lbn6i" class="article-share-link" data-share="baidu" data-title="产品元认知">分享到</a>
       
 
       
@@ -296,19 +214,7 @@ _st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
       </header>
 	  
 	   
-      <div class="busuanzi_container_page_pv"> 
-        <span class="head-plus">   
-			<i class="fa fa-user"></i>
-        <span id="busuanzi_value_page_pv">
-			<i class="fa fa-spinner fa-spin"></i>
-        </span>次访问   </span>  
-        <span class="head-plus">  
-			<i class="fa fa-comments"></i>
-        <span class="ds-thread-count" data-thread-key="2016/06/01/互联网协议浅析/">
-			<i class="fa fa-spinner fa-spin"></i></span>条评论  
-        </span> 
-      </div> 
-      
+	  
 	  
     
     <div class="article-entry" itemprop="articleBody">
@@ -316,39 +222,17 @@ _st(&apos;install&apos;,&apos;RUSAgTB9J3nET_uNMqyj&apos;,&apos;2.0.0&apos;);
         <p>学通信已有5年有余，计算机网络虽在大三为应付考试，理解并不深。当初也是为了学好这门功课，硬是在亚洲最长的图书馆里啃着一本巨厚的《TCP/IP协议族》。</p>
 <p>最近搞出了一个博客benja.info，欣喜有余，总是不由自主地在地址栏敲入这几个英文字母，看看会发生什么神奇的事情。虽早已知道会发生什么，但当她弹出的那一刻，还是会欣喜不已。</p>
 <p>时间过滤后的才是精华，这句话用在此处也很恰当。当初厚厚的计算机网络，现在想起来的也就是OSI参考模型和5层网络协议这组关键词能留在记忆中。那不妨顺着这个框架走下去，聊聊今天的理解。</p>
-<p>互联网的5层模型，从底层到高层分别为物理层，数据链路层，网络层，传输层和应用层。那么我们不禁要问，为什么是5层，而不是6层、7层？这5层都是干什么的，可以拿掉一个么？</p>
-<p>带着这些问题，我们从最简单的点到点模型开始浅析。一台电脑要与另一台电脑通信，我们可以用一根网线来连接，也可以通过无线来连接，这种有发送方和接收方是一对一的，就是物理层要实现的功能，只管发送0和1的比特信号。</p>
-<p>如果有三台电脑要相互通信，单纯利用网线已经无法实现，就得考虑如何将比特信号发送给指定电脑，那么就需要写入接收方的地址。每台主机都有一个网卡，网卡的MAC地址就是唯一定义的地址，是固定不变的。那好了，有了MAC地址，我们就可以发送数据包了，我们习惯在数据报的头部插入地址，尾部插入数据。有了MAC地址，如何发送给接受者呢？采用广播的方法给子网内部的所有主机发送，主机通过比较来判断是否接受。这就是数据链路层。</p>
-<p>当电脑的数量越来越多，这种广播的方式就有点低效和浪费网络资源了。电脑就开始形成各个小的网络，成为子网，而MAC地址本身不可更改的特性造就了其局限性，发明了网络地址来定义主机，也就是IP地址。IP地址有两部分组成，前面代表子网号，后面代表主机号。IP协议的一个作用就是为计算机分配IP地址，另一个作用就是确定IP地址归属与哪个子网。后者依赖于另一参数，叫做子网掩码。只有当两个IP地址与子网掩码进行与运算后，结果相同才属于一个子网。那么，当一台电脑要与另一台电脑通信时，知道IP地址是不够的，还需要知道MAC地址，怎么由IP地址得到MAC地址呢？当一个子网内部时，使用ARP协议（地址解析协议）；当不在一个子网中，让网关去处理。这就是网络层。</p>
-<p>当一台电脑能够连接到另一台电脑时，我们就要考虑程序间是如何通信的。计算机都是多进程处理，一边聊QQ，一边浏览网页，如何确保接收到的数据包是给QQ呢，还是Chrome呢？这是我们就需要一个参数来定义进程间的通信，就是端口号。一种通信方式是把端口号放入数据报中，就可以进行传输，这种不可靠的传输成为UDP协议传输。还有一种为协议引入了确认机制，就是著名的三次握手协议，TCP协议，其实就是有确认机制的UDP。这就是传输层。</p>
-<p>当应用程序能够通过传输协议收到数据包，就可以解读了。但是数据格式各种各种，就需要一套规范，不同的应用程序就有不同的数据规范，这就是应用层。比如Email，WWW等。</p>
-<p>举例来说，当我们要访问benja.info时，地址栏敲入http：//benja.info，这种格式为URL格式，前面的http协议是超文本传送协议，后面的benja.info为域名地址。</p>
-<ol>
-<li><p>浏览器会分析URL链接，向DNS服务器请求解析benja.info的域名，这里的DNS服务器是DNSPod。</p>
-</li>
-<li><p>DNSPod会返回一个IP地址，这个地址github pages，我么在这上面架设了仓库，存放博客程序。</p>
-</li>
-<li><p>浏览器与服务器建立TCP连接。</p>
-</li>
-<li><p>浏览器发出请求显示页面的命令。</p>
-</li>
-<li><p>github pages服务器给出响应，把html文件发送给浏览器。</p>
-</li>
-<li><p>释放TCP连接。</p>
-</li>
-<li><p>浏览器显示html文本。</p>
-</li>
-</ol>
-<p>参考：</p>
-<ul>
-<li>阮一峰的<a href="http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html" target="_blank" rel="external">互联网协议入门（二）</a></li>
-</ul>
-
+<p>互联网的5层模型，从底层到高层分别为物理层，数据链路层，网络层，传输层和应用层。那么我们不禁要问，为什么是5层，而不是6层、7层？这5层都是干什么的，可以拿掉一个么？<br>
+        
+          <p class="article-more-link">
+            <a href="/2016/06/01/互联网协议浅析/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/01/互联网协议浅析/" data-id="cip5f5zub00067gosobyjj9iy" class="article-share-link" data-share="baidu" data-title="互联网协议浅析">分享到</a>
+        <a data-url="http://benja.info/2016/06/01/互联网协议浅析/" data-id="cip5fhimq0002hgosi3dkzkvl" class="article-share-link" data-share="baidu" data-title="互联网协议浅析">分享到</a>
       
 
       
