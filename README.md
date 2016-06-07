@@ -14,5 +14,6 @@
 * SEO优化，参考[这里](http://www.jianshu.com/p/86557c34b671)
  * 提交robots.txt
  * [Google search console](https://www.google.com/webmasters/tools/home?hl=zh-CN)
-* 页围添加表格对其，新增github链接
+* 头部加入社交入口
+* 页尾添加表格对齐，新增github链接
 * 实现页面折叠
