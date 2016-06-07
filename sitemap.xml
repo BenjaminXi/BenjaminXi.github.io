@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://benja.info/2016/06/01/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E6%B5%85%E6%9E%90/</loc>
+    
+    <lastmod>2016-06-07T12:24:40.982Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://benja.info/2016/06/04/%E4%BA%A7%E5%93%81%E5%85%83%E8%AE%A4%E7%9F%A5/</loc>
+    
+    <lastmod>2016-06-07T12:22:06.155Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://benja.info/2016/06/06/Hexo%E5%88%A9%E7%94%A8swiftype%E4%B8%BAlandscape-plus%E6%B7%BB%E5%8A%A0%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2/</loc>
     
     <lastmod>2016-06-06T13:26:33.231Z</lastmod>
@@ -12,20 +26,6 @@
     <loc>http://benja.info/search/index.html</loc>
     
     <lastmod>2016-06-06T06:56:54.721Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://benja.info/2016/06/04/%E4%BA%A7%E5%93%81%E5%85%83%E8%AE%A4%E7%9F%A5/</loc>
-    
-    <lastmod>2016-06-04T08:51:25.606Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://benja.info/2016/06/01/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E6%B5%85%E6%9E%90/</loc>
-    
-    <lastmod>2016-06-01T13:48:17.517Z</lastmod>
     
   </url>
   

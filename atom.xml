@@ -111,7 +111,7 @@ _st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;ap
     <link href="http://benja.info/2016/06/04/%E4%BA%A7%E5%93%81%E5%85%83%E8%AE%A4%E7%9F%A5/"/>
     <id>http://benja.info/2016/06/04/产品元认知/</id>
     <published>2016-06-04T08:38:59.000Z</published>
-    <updated>2016-06-04T08:51:25.606Z</updated>
+    <updated>2016-06-07T12:22:06.155Z</updated>
     
     <content type="html">&lt;p&gt;题外话  &lt;/p&gt;
 &lt;hr&gt;
@@ -134,6 +134,10 @@ _st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;ap
       <category term="产品" scheme="http://benja.info/categories/%E4%BA%A7%E5%93%81/"/>
     
     
+      <category term="产品" scheme="http://benja.info/tags/%E4%BA%A7%E5%93%81/"/>
+    
+      <category term="启示录" scheme="http://benja.info/tags/%E5%90%AF%E7%A4%BA%E5%BD%95/"/>
+    
   </entry>
   
   <entry>
@@ -141,7 +145,7 @@ _st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;ap
     <link href="http://benja.info/2016/06/01/%E4%BA%92%E8%81%94%E7%BD%91%E5%8D%8F%E8%AE%AE%E6%B5%85%E6%9E%90/"/>
     <id>http://benja.info/2016/06/01/互联网协议浅析/</id>
     <published>2016-05-31T16:00:00.000Z</published>
-    <updated>2016-06-01T13:48:17.517Z</updated>
+    <updated>2016-06-07T12:24:40.982Z</updated>
     
     <content type="html">&lt;p&gt;学通信已有5年有余，计算机网络虽在大三为应付考试，理解并不深。当初也是为了学好这门功课，硬是在亚洲最长的图书馆里啃着一本巨厚的《TCP/IP协议族》。&lt;/p&gt;
 &lt;p&gt;最近搞出了一个博客benja.info，欣喜有余，总是不由自主地在地址栏敲入这几个英文字母，看看会发生什么神奇的事情。虽早已知道会发生什么，但当她弹出的那一刻，还是会欣喜不已。&lt;/p&gt;
@@ -169,6 +173,10 @@ _st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;ap
 &lt;li&gt;&lt;p&gt;浏览器显示html文本。&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;阮一峰的&lt;a href=&quot;http://www.ruanyifeng.com/blog/2012/06/internet_protocol_suite_part_ii.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;互联网协议入门（二）&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
@@ -179,6 +187,8 @@ _st(&amp;apos;install&amp;apos;,&amp;apos;RUSAgTB9J3nET_uNMqyj&amp;apos;,&amp;ap
     
       <category term="网络" scheme="http://benja.info/categories/%E7%BD%91%E7%BB%9C/"/>
     
+    
+      <category term="协议" scheme="http://benja.info/tags/%E5%8D%8F%E8%AE%AE/"/>
     
   </entry>
   
