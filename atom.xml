@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://benja.info/"/>
-  <updated>2016-06-14T13:50:12.320Z</updated>
+  <updated>2016-06-14T15:03:42.531Z</updated>
   <id>http://benja.info/</id>
   
   <author>
@@ -20,16 +20,127 @@
     <link href="http://benja.info/2016/06/14/%E9%A1%B5%E9%9D%A2%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
     <id>http://benja.info/2016/06/14/页面调度算法详解/</id>
     <published>2016-06-14T13:31:22.000Z</published>
-    <updated>2016-06-14T13:50:12.320Z</updated>
+    <updated>2016-06-14T15:03:42.531Z</updated>
     
-    <content type="html">&lt;p&gt;常用的页面调度算法有FIFO，LRU，LFU&lt;/p&gt;
-&lt;h1 id=&quot;LFU（Least-frequently-used）最少使用算法&quot;&gt;&lt;a href=&quot;#LFU（Least-frequently-used）最少使用算法&quot; class=&quot;headerlink&quot; title=&quot;LFU（Least frequently used）最少使用算法&quot;&gt;&lt;/a&gt;LFU（Least frequently used）最少使用算法&lt;/h1&gt;&lt;p&gt;缓存算法的一种。简单来说就是当缓存已满时，会清理掉使用频率最低的页面。举例来说：&lt;br&gt;我们有10个页面，依次进入缓存为：&lt;br&gt;| 2 | 3 | 4 | 2 | 1 | 3 | 7 | 5 | 4 | 3 |&lt;/p&gt;
-&lt;h1 id=&quot;LRU-Least-recently-used-最近最少使用算法&quot;&gt;&lt;a href=&quot;#LRU-Least-recently-used-最近最少使用算法&quot; class=&quot;headerlink&quot; title=&quot;LRU(Least recently used)最近最少使用算法&quot;&gt;&lt;/a&gt;LRU(Least recently used)最近最少使用算法&lt;/h1&gt;&lt;h1 id=&quot;OPT-Optimal-replacement-Algorithm&quot;&gt;&lt;a href=&quot;#OPT-Optimal-replacement-Algorithm&quot; class=&quot;headerlink&quot; title=&quot;OPT(Optimal replacement Algorithm)&quot;&gt;&lt;/a&gt;OPT(Optimal replacement Algorithm)&lt;/h1&gt;</content>
+    <content type="html">&lt;h2 id=&quot;LFU（Least-frequently-used）最少使用算法&quot;&gt;&lt;a href=&quot;#LFU（Least-frequently-used）最少使用算法&quot; class=&quot;headerlink&quot; title=&quot;LFU（Least frequently used）最少使用算法&quot;&gt;&lt;/a&gt;LFU（Least frequently used）最少使用算法&lt;/h2&gt;&lt;p&gt;缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;如下图所示，我们有10个页面，&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;2&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;th&gt;4&lt;/th&gt;
+&lt;th&gt;2&lt;/th&gt;
+&lt;th&gt;1&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;th&gt;7&lt;/th&gt;
+&lt;th&gt;5&lt;/th&gt;
+&lt;th&gt;4&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;第一行为进入缓存的10个页面，而缓存空间只能存放3个页面，当页面2进入缓存，没问题，3和4依次进入。当页面2再次进入，频次加1。页面1进入，页面频次最高，保留；页面4和页面3频次都为1，由于页面4最后进入，保留，所以页面3替换为页面1。页面3进入，注意此时频次为1，所以页面4替换为页面3。依次类推。最后的缓存为页面2,4,3。&lt;/p&gt;
+&lt;p&gt;此算法有个问题，页面2始终霸占着缓存，导致了资源的浪费，这是由于频次最高的页面我们却很少使用，而新进入的页面又很快地被移除。所以就有了该算法的改进LRU。&lt;/p&gt;
+&lt;h2 id=&quot;LRU-Least-recently-used-最近最少使用算法&quot;&gt;&lt;a href=&quot;#LRU-Least-recently-used-最近最少使用算法&quot; class=&quot;headerlink&quot; title=&quot;LRU(Least recently used) 最近最少使用算法&quot;&gt;&lt;/a&gt;LRU(Least recently used) 最近最少使用算法&lt;/h2&gt;&lt;p&gt;LRU的清理规则是清理最近最少使用的页面。LRU就很好的解决了上面的问题。还是相同的页面进入：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;2&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;th&gt;4&lt;/th&gt;
+&lt;th&gt;2&lt;/th&gt;
+&lt;th&gt;1&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;th&gt;7&lt;/th&gt;
+&lt;th&gt;5&lt;/th&gt;
+&lt;th&gt;4&lt;/th&gt;
+&lt;th&gt;3&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;2&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;7&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;1&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;td&gt;5&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;3&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;td&gt;4&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;前4次和上面一样，就不再解释了。当页面1进入，页面2为最新，页面4其次，页面3最老，所以替换掉页面3，这个替换规则是替换掉最老的页面。当页面3进入，页面4此时为最老，替换掉。依次类推。最终的缓存为页面3,5，4。可以看到，这三个页面是最后进入的页面，所以LRU留下的页面为最新的页面。&lt;/p&gt;
+&lt;h2 id=&quot;FIFO（First-in，first-out）先进先出算法&quot;&gt;&lt;a href=&quot;#FIFO（First-in，first-out）先进先出算法&quot; class=&quot;headerlink&quot; title=&quot;FIFO（First-in，first-out）先进先出算法&quot;&gt;&lt;/a&gt;FIFO（First-in，first-out）先进先出算法&lt;/h2&gt;&lt;p&gt;低开销算法。开源系统将页面排成队列，新进入的页面排在最后，最老的页面排在最前。当页面需要清理时，先选择队列最前的页面。由于该算法较为简单和直观，在实际中很少应用。&lt;/p&gt;
+</content>
     
     <summary type="html">
     
-      &lt;p&gt;常用的页面调度算法有FIFO，LRU，LFU&lt;/p&gt;
-&lt;h1 id=&quot;LFU（Least-frequently-used）最少使用算法&quot;&gt;&lt;a href=&quot;#LFU（Least-frequently-used）最少使用算法&quot; class=&quot;headerlink&quot; title
+      &lt;h2 id=&quot;LFU（Least-frequently-used）最少使用算法&quot;&gt;&lt;a href=&quot;#LFU（Least-frequently-used）最少使用算法&quot; class=&quot;headerlink&quot; title=&quot;LFU（Least frequently used）最少使用算法&quot;&gt;&lt;/a&gt;LFU（Least frequently used）最少使用算法&lt;/h2&gt;&lt;p&gt;缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，
     
     </summary>
     

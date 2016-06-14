@@ -8,22 +8,16 @@
   
   <title>页面调度算法详解 | Wabi Sabi</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="常用的页面调度算法有FIFO，LRU，LFU
-LFU（Least frequently used）最少使用算法缓存算法的一种。简单来说就是当缓存已满时，会清理掉使用频率最低的页面。举例来说：我们有10个页面，依次进入缓存为：| 2 | 3 | 4 | 2 | 1 | 3 | 7 | 5 | 4 | 3 |
-LRU(Least recently used)最近最少使用算法OPT(Optimal re">
+  <meta name="description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="页面调度算法详解">
 <meta property="og:url" content="http://benja.info/2016/06/14/页面调度算法详解/index.html">
 <meta property="og:site_name" content="Wabi Sabi">
-<meta property="og:description" content="常用的页面调度算法有FIFO，LRU，LFU
-LFU（Least frequently used）最少使用算法缓存算法的一种。简单来说就是当缓存已满时，会清理掉使用频率最低的页面。举例来说：我们有10个页面，依次进入缓存为：| 2 | 3 | 4 | 2 | 1 | 3 | 7 | 5 | 4 | 3 |
-LRU(Least recently used)最近最少使用算法OPT(Optimal re">
-<meta property="og:updated_time" content="2016-06-14T13:50:12.320Z">
+<meta property="og:description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
+<meta property="og:updated_time" content="2016-06-14T15:03:42.531Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="页面调度算法详解">
-<meta name="twitter:description" content="常用的页面调度算法有FIFO，LRU，LFU
-LFU（Least frequently used）最少使用算法缓存算法的一种。简单来说就是当缓存已满时，会清理掉使用频率最低的页面。举例来说：我们有10个页面，依次进入缓存为：| 2 | 3 | 4 | 2 | 1 | 3 | 7 | 5 | 4 | 3 |
-LRU(Least recently used)最近最少使用算法OPT(Optimal re">
+<meta name="twitter:description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
   
     <link rel="alternative" href="/atom.xml" title="Wabi Sabi" type="application/atom+xml">
   
@@ -118,14 +112,126 @@ LRU(Least recently used)最近最少使用算法OPT(Optimal re">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>常用的页面调度算法有FIFO，LRU，LFU</p>
-<h1 id="LFU（Least-frequently-used）最少使用算法"><a href="#LFU（Least-frequently-used）最少使用算法" class="headerlink" title="LFU（Least frequently used）最少使用算法"></a>LFU（Least frequently used）最少使用算法</h1><p>缓存算法的一种。简单来说就是当缓存已满时，会清理掉使用频率最低的页面。举例来说：<br>我们有10个页面，依次进入缓存为：<br>| 2 | 3 | 4 | 2 | 1 | 3 | 7 | 5 | 4 | 3 |</p>
-<h1 id="LRU-Least-recently-used-最近最少使用算法"><a href="#LRU-Least-recently-used-最近最少使用算法" class="headerlink" title="LRU(Least recently used)最近最少使用算法"></a>LRU(Least recently used)最近最少使用算法</h1><h1 id="OPT-Optimal-replacement-Algorithm"><a href="#OPT-Optimal-replacement-Algorithm" class="headerlink" title="OPT(Optimal replacement Algorithm)"></a>OPT(Optimal replacement Algorithm)</h1>
+        <h2 id="LFU（Least-frequently-used）最少使用算法"><a href="#LFU（Least-frequently-used）最少使用算法" class="headerlink" title="LFU（Least frequently used）最少使用算法"></a>LFU（Least frequently used）最少使用算法</h2><p>缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，<a id="more"></a>如下图所示，我们有10个页面，</p>
+<table>
+<thead>
+<tr>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>3</th>
+<th>7</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>7</td>
+<td>7</td>
+<td>4</td>
+<td>4</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>5</td>
+<td>5</td>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+<p>第一行为进入缓存的10个页面，而缓存空间只能存放3个页面，当页面2进入缓存，没问题，3和4依次进入。当页面2再次进入，频次加1。页面1进入，页面频次最高，保留；页面4和页面3频次都为1，由于页面4最后进入，保留，所以页面3替换为页面1。页面3进入，注意此时频次为1，所以页面4替换为页面3。依次类推。最后的缓存为页面2,4,3。</p>
+<p>此算法有个问题，页面2始终霸占着缓存，导致了资源的浪费，这是由于频次最高的页面我们却很少使用，而新进入的页面又很快地被移除。所以就有了该算法的改进LRU。</p>
+<h2 id="LRU-Least-recently-used-最近最少使用算法"><a href="#LRU-Least-recently-used-最近最少使用算法" class="headerlink" title="LRU(Least recently used) 最近最少使用算法"></a>LRU(Least recently used) 最近最少使用算法</h2><p>LRU的清理规则是清理最近最少使用的页面。LRU就很好的解决了上面的问题。还是相同的页面进入：</p>
+<table>
+<thead>
+<tr>
+<th>2</th>
+<th>3</th>
+<th>4</th>
+<th>2</th>
+<th>1</th>
+<th>3</th>
+<th>7</th>
+<th>5</th>
+<th>4</th>
+<th>3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>2</td>
+<td>7</td>
+<td>7</td>
+<td>7</td>
+<td>3</td>
+</tr>
+<tr>
+<td></td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>5</td>
+<td>5</td>
+<td>5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>4</td>
+<td>4</td>
+<td>4</td>
+<td>3</td>
+<td>3</td>
+<td>3</td>
+<td>4</td>
+<td>4</td>
+</tr>
+</tbody>
+</table>
+<p>前4次和上面一样，就不再解释了。当页面1进入，页面2为最新，页面4其次，页面3最老，所以替换掉页面3，这个替换规则是替换掉最老的页面。当页面3进入，页面4此时为最老，替换掉。依次类推。最终的缓存为页面3,5，4。可以看到，这三个页面是最后进入的页面，所以LRU留下的页面为最新的页面。</p>
+<h2 id="FIFO（First-in，first-out）先进先出算法"><a href="#FIFO（First-in，first-out）先进先出算法" class="headerlink" title="FIFO（First-in，first-out）先进先出算法"></a>FIFO（First-in，first-out）先进先出算法</h2><p>低开销算法。开源系统将页面排成队列，新进入的页面排在最后，最老的页面排在最前。当页面需要清理时，先选择队列最前的页面。由于该算法较为简单和直观，在实际中很少应用。</p>
+
       
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://benja.info/2016/06/14/页面调度算法详解/" data-id="cipfiaax900080koss4t5992a" class="article-share-link" data-share="baidu" data-title="页面调度算法详解">分享到</a>
+        <a data-url="http://benja.info/2016/06/14/页面调度算法详解/" data-id="cipfioqek0006tkosf3sr7e5h" class="article-share-link" data-share="baidu" data-title="页面调度算法详解">分享到</a>
       
 
       
