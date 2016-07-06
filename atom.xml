@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>Wabi Sabi</title>
   
-  <link href="/m/atom.xml" rel="self"/>
+  <link href="/atom.xml" rel="self"/>
   
   <link href="http://benja.info/"/>
   <updated>2016-06-14T15:03:42.531Z</updated>
