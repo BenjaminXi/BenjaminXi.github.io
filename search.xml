@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title><![CDATA[Hexo的SEO优化]]></title>
+      <url>http://benja.info/2016/08/17/Hexo%E7%9A%84SEO%E4%BC%98%E5%8C%96/</url>
+      <content type="html"><![CDATA[<h2 id="添加sitemap站点地图"><a href="#添加sitemap站点地图" class="headerlink" title="添加sitemap站点地图"></a>添加sitemap站点地图</h2><ul>
+<li><p>安转hexo的sitemap插件，支持goole和百度搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-sitemap --save</div><div class="line">npm install hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>在网站配置文件_config.yml添加路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># hexo sitemap</div><div class="line">sitemap:</div><div class="line">path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">path: baidusitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>hexo在generate中会产生sitemap.xml和baidusitemap.xml文件，分别提交给google和百度。</p>
+<h2 id="添加蜘蛛协议robots-txt"><a href="#添加蜘蛛协议robots-txt" class="headerlink" title="添加蜘蛛协议robots.txt"></a>添加蜘蛛协议robots.txt</h2></li>
+<li><p>在\source文件下新建robots.txt，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># hexo robots.txt</div><div class="line">User-agent: * Allow: /</div><div class="line">Allow: /archives/</div><div class="line">Disallow: /vendors/</div><div class="line">Disallow: /js/</div><div class="line">Disallow: /css/</div><div class="line">Disallow: /fonts/</div><div class="line">Disallow: /vendors/</div><div class="line">Disallow: /fancybox/</div><div class="line"></div><div class="line">Sitemap: http://benja.info/sitemap.xml</div><div class="line">Sitemap: http://benja.info/baidusitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意：最后两行换为个人的网站地址。</p>
+<h2 id="添加关键字和网站描述到title标题"><a href="#添加关键字和网站描述到title标题" class="headerlink" title="添加关键字和网站描述到title标题"></a>添加关键字和网站描述到title标题</h2></li>
+<li>这样做有利于更详细的描述网站。在\themes\next\layout\index.swig中将如下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% block title %&#125; &#123;&#123; config.title &#125;&#125; &#123;% endlock %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>换为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% block title %&#125; &#123;&#123; theme.keywords &#125;&#125; - &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; &#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>注意：整个title不超过80个字符。</li>
+</ul>
+]]></content>
+    </entry>
+    
+    <entry>
       <title><![CDATA[页面调度算法详解]]></title>
       <url>http://benja.info/2016/06/14/%E9%A1%B5%E9%9D%A2%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/</url>
       <content type="html"><![CDATA[<h2 id="LFU（Least-frequently-used）最少使用算法"><a href="#LFU（Least-frequently-used）最少使用算法" class="headerlink" title="LFU（Least frequently used）最少使用算法"></a>LFU（Least frequently used）最少使用算法</h2><p>缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，<a id="more"></a>如下图所示，我们有10个页面，</p>

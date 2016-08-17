@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="hexo,seo,搜索引擎优化," />
 
 
 
@@ -84,12 +84,16 @@
 
 
 
-<meta property="og:type" content="website">
-<meta property="og:title" content="Benjamain Talk">
-<meta property="og:url" content="http://benja.info/categories/Hexo/index.html">
+<meta name="description" content="SEO，即搜索引擎优化，有利于提高搜索引擎的网页排名，本文针对Hexo网站进行SEO优化。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo的SEO优化">
+<meta property="og:url" content="http://benja.info/2016/08/17/Hexo的SEO优化/index.html">
 <meta property="og:site_name" content="Benjamain Talk">
+<meta property="og:description" content="SEO，即搜索引擎优化，有利于提高搜索引擎的网页排名，本文针对Hexo网站进行SEO优化。">
+<meta property="og:updated_time" content="2016-08-17T01:05:46.808Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Benjamain Talk">
+<meta name="twitter:title" content="Hexo的SEO优化">
+<meta name="twitter:description" content="SEO，即搜索引擎优化，有利于提高搜索引擎的网页排名，本文针对Hexo网站进行SEO优化。">
 
 
 
@@ -110,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://benja.info/categories/Hexo/"/>
+  <link rel="canonical" href="http://benja.info/2016/08/17/Hexo的SEO优化/"/>
 
-  <title> 分类: Hexo | Benjamain Talk </title>
+  <title> Hexo的SEO优化 | Benjamain Talk </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -133,7 +137,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -244,47 +248,181 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        Hexo
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Hexo的SEO优化
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-17T08:28:40+08:00" content="2016-08-17">
+              2016-08-17
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/17/Hexo的SEO优化/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/17/Hexo的SEO优化/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+              &nbsp; | &nbsp;
+              <span class="page-pv"><i class="fa fa-file-o">本文阅读量</i>
+              <span class="busuanzi-value" id="busuanzi_value_page_pv" ></span>次
+              </span>
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <h2 id="添加sitemap站点地图"><a href="#添加sitemap站点地图" class="headerlink" title="添加sitemap站点地图"></a>添加sitemap站点地图</h2><ul>
+<li><p>安转hexo的sitemap插件，支持goole和百度搜索</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">npm install hexo-generator-sitemap --save</div><div class="line">npm install hexo-generator-baidu-sitemap --save</div></pre></td></tr></table></figure>
+</li>
+<li><p>在网站配置文件_config.yml添加路径</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"># hexo sitemap</div><div class="line">sitemap:</div><div class="line">path: sitemap.xml</div><div class="line">baidusitemap:</div><div class="line">path: baidusitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>hexo在generate中会产生sitemap.xml和baidusitemap.xml文件，分别提交给google和百度。</p>
+<h2 id="添加蜘蛛协议robots-txt"><a href="#添加蜘蛛协议robots-txt" class="headerlink" title="添加蜘蛛协议robots.txt"></a>添加蜘蛛协议robots.txt</h2></li>
+<li><p>在\source文件下新建robots.txt，代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"># hexo robots.txt</div><div class="line">User-agent: * Allow: /</div><div class="line">Allow: /archives/</div><div class="line">Disallow: /vendors/</div><div class="line">Disallow: /js/</div><div class="line">Disallow: /css/</div><div class="line">Disallow: /fonts/</div><div class="line">Disallow: /vendors/</div><div class="line">Disallow: /fancybox/</div><div class="line"></div><div class="line">Sitemap: http://benja.info/sitemap.xml</div><div class="line">Sitemap: http://benja.info/baidusitemap.xml</div></pre></td></tr></table></figure>
+</li>
+<li><p>注意：最后两行换为个人的网站地址。</p>
+<h2 id="添加关键字和网站描述到title标题"><a href="#添加关键字和网站描述到title标题" class="headerlink" title="添加关键字和网站描述到title标题"></a>添加关键字和网站描述到title标题</h2></li>
+<li>这样做有利于更详细的描述网站。在\themes\next\layout\index.swig中将如下代码<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% block title %&#125; &#123;&#123; config.title &#125;&#125; &#123;% endlock %&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>换为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&#123;% block title %&#125; &#123;&#123; theme.keywords &#125;&#125; - &#123;&#123; config.title &#125;&#125; - &#123;&#123; theme.description &#125;&#125; &#123;% endblock %&#125;</div></pre></td></tr></table></figure></p>
+<ul>
+<li>注意：整个title不超过80个字符。</li>
+</ul>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" itemprop="url">
-              
-                <span itemprop="name">利用swiftype为Hexo主题为landscape-plus添加站内搜索</span>
-              
-            </a>
+
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-06-06T16:41:37+08:00"
-              content="2016-06-06" >
-          06-06
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/hexo/" rel="tag">#hexo</a>
+          
+            <a href="/tags/seo/" rel="tag">#seo</a>
+          
+            <a href="/tags/搜索引擎优化/" rel="tag">#搜索引擎优化</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/06/14/页面调度算法详解/" rel="next" title="页面调度算法详解">
+                <i class="fa fa-chevron-left"></i> 页面调度算法详解
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <!-- JiaThis Button BEGIN -->
+<div class="jiathis_style">
+  <a class="jiathis_button_tsina"></a>
+  <a class="jiathis_button_tqq"></a>
+  <a class="jiathis_button_weixin"></a>
+  <a class="jiathis_button_cqq"></a>
+  <a class="jiathis_button_douban"></a>
+  <a class="jiathis_button_renren"></a>
+  <a class="jiathis_button_qzone"></a>
+  <a class="jiathis_button_kaixin001"></a>
+  <a class="jiathis_button_copy"></a>
+  <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis" target="_blank"></a>
+  <a class="jiathis_counter_style"></a>
+</div>
+<script type="text/javascript" >
+  var jiathis_config={
+    hideMore:false
+  }
+</script>
+<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+<!-- JiaThis Button END -->
 
+      
+    </div>
+  </div>
 
 
           </div>
@@ -292,6 +430,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/17/Hexo的SEO优化/"
+           data-title="Hexo的SEO优化" data-url="http://benja.info/2016/08/17/Hexo的SEO优化/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -311,8 +457,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -391,6 +546,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#添加sitemap站点地图"><span class="nav-number">1.</span> <span class="nav-text">添加sitemap站点地图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加蜘蛛协议robots-txt"><span class="nav-number">2.</span> <span class="nav-text">添加蜘蛛协议robots.txt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#添加关键字和网站描述到title标题"><span class="nav-number">3.</span> <span class="nav-text">添加关键字和网站描述到title标题</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -510,6 +676,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
