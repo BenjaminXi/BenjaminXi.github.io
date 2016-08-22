@@ -90,7 +90,7 @@
 <meta property="og:url" content="http://benja.info/2016/08/21/Sublime-Text-3快速生成HTML头部信息/index.html">
 <meta property="og:site_name" content="Benjamain Talk">
 <meta property="og:description" content="Sublime text 3是前端开发的利器，以支持足够多的插件而闻名。我们在创建HTML文件时，需要编写大量的头信息，而Emmet插件可以快速生成HTML头部信息并进行代码补全。">
-<meta property="og:updated_time" content="2016-08-21T07:57:01.889Z">
+<meta property="og:updated_time" content="2016-08-21T08:08:33.868Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Sublime Text 3快速生成HTML头部信息">
 <meta name="twitter:description" content="Sublime text 3是前端开发的利器，以支持足够多的插件而闻名。我们在创建HTML文件时，需要编写大量的头信息，而Emmet插件可以快速生成HTML头部信息并进行代码补全。">
@@ -321,25 +321,20 @@
       
 
       
-        <h2 id="安装package-control"><a href="#安装package-control" class="headerlink" title="安装package control"></a>安装package control</h2><ul>
-<li>最简单的方法是通过Sublime Text console，通过ctrl+`或者View&gt;Show Console菜单打开命令行，粘贴下面的Python代码：<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;2915d1851351e5ee549c20394736b442&apos; + &apos;8bc59f460fa1548d1514676163dafc88&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>这个代码会在C:\Users\Administrator\AppData\Roaming\Sublime Text 3\Installed Packages文件夹中生成Pacage Control.sublime-package文件。</p>
-<ul>
-<li>如果上述方法不起作用，可通过下面的操作手动安装<ol>
+        <h2 id="安装package-control"><a href="#安装package-control" class="headerlink" title="安装package control"></a>安装package control</h2><p>最简单的方法是通过Sublime Text console，通过ctrl+`或者View&gt;Show Console菜单打开命令行，粘贴下面的Python代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">import urllib.request,os,hashlib; h = &apos;2915d1851351e5ee549c20394736b442&apos; + &apos;8bc59f460fa1548d1514676163dafc88&apos;; pf = &apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); by = urllib.request.urlopen( &apos;http://packagecontrol.io/&apos; + pf.replace(&apos; &apos;, &apos;%20&apos;)).read(); dh = hashlib.sha256(by).hexdigest(); print(&apos;Error validating download (got %s instead of %s), please try manual install&apos; % (dh, h)) if dh != h else open(os.path.join( ipp, pf), &apos;wb&apos; ).write(by)</div></pre></td></tr></table></figure></p>
+<p>这个代码会在C:\Users\Administrator\AppData\Roaming\Sublime Text 3\Installed Packages文件夹中生成Pacage Control.sublime-package文件。<br>如果上述方法不起作用，可通过下面的操作手动安装</p>
+<ol>
 <li>点击Preference&gt;Browse Packages…</li>
 <li>选择Installed Package文件夹</li>
 <li>下载<a href="https://packagecontrol.io/Package%20Control.sublime-package" target="_blank" rel="external">Package Control.sublime-package</a>到上面的文件夹</li>
 <li>重启Sublime</li>
 </ol>
-</li>
-</ul>
-<p>##安转Emmet<br>在windows下通过ctrl+shift+p调出命令窗口，输入install，选中package control：install package，sublime会打开Installed Package文件夹，搜索emmet,安装即可。</p>
-<p>##快捷键<br>输入！+tab就可以生成一个HTML5文档结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="安转Emmet"><a href="#安转Emmet" class="headerlink" title="安转Emmet"></a>安转Emmet</h2><p>在windows下通过ctrl+shift+p调出命令窗口，输入install，选中package control：install package，sublime会打开Installed Package文件夹，搜索emmet,安装即可。</p>
+<h2 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h2><p>输入！+tab就可以生成一个HTML5文档结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">	&lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">	&lt;title&gt;Document&lt;/title&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">	</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure></p>
 <p>参考资料：  </p>
 <ul>
-<li><a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a></li>
+<li><a href="https://packagecontrol.io/installation" target="_blank" rel="external">Package Control</a>  </li>
+<li><a href="http://docs.emmet.io/cheat-sheet/" target="_blank" rel="external">更多emmet快捷键</a></li>
 </ul>
 
       
@@ -550,7 +545,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装package-control"><span class="nav-number">1.</span> <span class="nav-text">安装package control</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装package-control"><span class="nav-number">1.</span> <span class="nav-text">安装package control</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安转Emmet"><span class="nav-number">2.</span> <span class="nav-text">安转Emmet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快捷键"><span class="nav-number">3.</span> <span class="nav-text">快捷键</span></a></li></ol></div>
             
           </div>
         </section>
