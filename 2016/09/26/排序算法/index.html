@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="缓存算法," />
+  <meta name="keywords" content="数据结构," />
 
 
 
@@ -84,16 +84,16 @@
 
 
 
-<meta name="description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
+<meta name="description" content="数据结构中常用的七种排序算法">
 <meta property="og:type" content="article">
-<meta property="og:title" content="页面调度算法详解">
-<meta property="og:url" content="http://benja.info/2016/06/14/页面调度算法详解/index.html">
+<meta property="og:title" content="排序算法">
+<meta property="og:url" content="http://benja.info/2016/09/26/排序算法/index.html">
 <meta property="og:site_name" content="Benjamain Talk">
-<meta property="og:description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
-<meta property="og:updated_time" content="2016-09-21T15:31:09.702Z">
+<meta property="og:description" content="数据结构中常用的七种排序算法">
+<meta property="og:updated_time" content="2016-09-26T14:37:25.181Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="页面调度算法详解">
-<meta name="twitter:description" content="LFU（Least frequently used）最少使用算法缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，">
+<meta name="twitter:title" content="排序算法">
+<meta name="twitter:description" content="数据结构中常用的七种排序算法">
 
 
 
@@ -114,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="http://benja.info/2016/06/14/页面调度算法详解/"/>
+  <link rel="canonical" href="http://benja.info/2016/09/26/排序算法/"/>
 
-  <title> 页面调度算法详解 | Benjamain Talk </title>
+  <title> 排序算法 | Benjamain Talk </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -269,7 +269,7 @@
             
             
               
-                页面调度算法详解
+                排序算法
               
             
           </h1>
@@ -281,38 +281,19 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-06-14T21:31:22+08:00" content="2016-06-14">
-              2016-06-14
+            <time itemprop="dateCreated" datetime="2016-09-26T22:10:25+08:00" content="2016-09-26">
+              2016-09-26
             </time>
           </span>
 
-          
-            <span class="post-category" >
-              &nbsp; | &nbsp;
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-              
-                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
-                  <a href="/categories/算法/" itemprop="url" rel="index">
-                    <span itemprop="name">算法</span>
-                  </a>
-                </span>
-
-                
-                
-
-              
-            </span>
           
 
           
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/06/14/页面调度算法详解/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/06/14/页面调度算法详解/" itemprop="commentsCount"></span>
+                <a href="/2016/09/26/排序算法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/26/排序算法/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -340,229 +321,20 @@
       
 
       
-        <h2 id="LFU（Least-frequently-used）最少使用算法"><a href="#LFU（Least-frequently-used）最少使用算法" class="headerlink" title="LFU（Least frequently used）最少使用算法"></a>LFU（Least frequently used）最少使用算法</h2><p>缓存算法（也叫缓存置换算法）的一种。缓存算法就是当缓存已满时，清理掉旧的页面为新的页面腾出空间的算法。不同的缓存算法区别在于清理的规则不同。LFU就是清理掉使用频率最低的页面。举例来说，<a id="more"></a>如下图所示，我们有10个页面，</p>
-<table>
-<thead>
-<tr>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>2</th>
-<th>1</th>
-<th>3</th>
-<th>7</th>
-<th>5</th>
-<th>4</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-<td>2</td>
-</tr>
-<tr>
-<td></td>
-<td>3</td>
-<td>3</td>
-<td>3</td>
-<td>1</td>
-<td>1</td>
-<td>7</td>
-<td>7</td>
-<td>4</td>
-<td>4</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>4</td>
-<td>4</td>
-<td>4</td>
-<td>3</td>
-<td>3</td>
-<td>5</td>
-<td>5</td>
-<td>3</td>
-</tr>
-</tbody>
-</table>
-<p>第一行为进入缓存的10个页面，而缓存空间只能存放3个页面，当页面2进入缓存，没问题，3和4依次进入。当页面2再次进入，频次加1。页面1进入，页面频次最高，保留；页面4和页面3频次都为1，由于页面4最后进入，保留，所以页面3替换为页面1。页面3进入，注意此时频次为1，所以页面4替换为页面3。依次类推。最后的缓存为页面2,4,3。</p>
-<p>此算法有个问题，页面2始终霸占着缓存，导致了资源的浪费，这是由于频次最高的页面我们却很少使用，而新进入的页面又很快地被移除。所以就有了该算法的改进LRU。</p>
-<h2 id="LRU-Least-recently-used-最近最少使用算法"><a href="#LRU-Least-recently-used-最近最少使用算法" class="headerlink" title="LRU(Least recently used) 最近最少使用算法"></a>LRU(Least recently used) 最近最少使用算法</h2><p>LRU的清理规则是清理最近最少使用的页面。LRU就很好的解决了上面的问题。还是相同的页面进入：</p>
-<table>
-<thead>
-<tr>
-<th>2</th>
-<th>3</th>
-<th>4</th>
-<th>2</th>
-<th>1</th>
-<th>3</th>
-<th>7</th>
-<th>5</th>
-<th>4</th>
-<th>3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>7</td>
-<td>5</td>
-<td>4</td>
-<td>3</td>
-</tr>
-<tr>
-<td></td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>7</td>
-<td>5</td>
-<td>4</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>2</td>
-<td>3</td>
-<td>4</td>
-<td>2</td>
-<td>1</td>
-<td>3</td>
-<td>7</td>
-<td>5</td>
-</tr>
-</tbody>
-</table>
-<p>前4次和上面一样，就不再解释了。当页面1进入，页面2为最新，页面4其次，页面3最老，所以替换掉页面3，这个替换规则是替换掉最老的页面。当页面3进入，页面4此时为最老，替换掉。依次类推。最终的缓存为页面3,5，4。可以看到，这三个页面是最后进入的页面，所以LRU留下的页面为最新的页面。<br>同样的，</p>
-<table>
-<thead>
-<tr>
-<th>1</th>
-<th>2</th>
-<th>5</th>
-<th>3</th>
-<th>4</th>
-<th>6</th>
-<th>1</th>
-<th>4</th>
-<th>3</th>
-<th>6</th>
-<th>7</th>
-<th>8</th>
-<th>3</th>
-<th>9</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>1</td>
-<td>2</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-<td>6</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>3</td>
-<td>9</td>
-</tr>
-<tr>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-<td>6</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-<td>3</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>5</td>
-<td>3</td>
-<td>4</td>
-<td>6</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>7</td>
-<td>8</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>5</td>
-<td>3</td>
-<td>3</td>
-<td>6</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-<td>7</td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-<td></td>
-<td>1</td>
-<td>2</td>
-<td>5</td>
-<td>5</td>
-<td>5</td>
-<td>5</td>
-<td>1</td>
-<td>4</td>
-<td>3</td>
-<td>6</td>
-</tr>
-</tbody>
-</table>
-<p>之所以这样写，LRU算法可以用链表来实现，实现过程如下：</p>
-<ol>
-<li>新数据加入到链表头部；</li>
-<li>每当缓存命中（即缓存数据被访问），则将数据移到链表头部；</li>
-<li>每当链表满的时候，将链表的尾部丢弃。</li>
-</ol>
-<p>表格的第一行表示数据加入顺序，每列第二行表示链表头部，第六行表示链表尾部。每当链表满时，最先丢弃的是最后一行。</p>
-<h2 id="FIFO（First-in，first-out）先进先出算法"><a href="#FIFO（First-in，first-out）先进先出算法" class="headerlink" title="FIFO（First-in，first-out）先进先出算法"></a>FIFO（First-in，first-out）先进先出算法</h2><p>低开销算法。开源系统将页面排成队列，新进入的页面排在最后，最老的页面排在最前。当页面需要清理时，先选择队列最前的页面。由于该算法较为简单和直观，在实际中很少应用。</p>
+        <h2 id="冒泡排序"><a href="#冒泡排序" class="headerlink" title="冒泡排序"></a>冒泡排序</h2><p>平均时间复杂度O(n<em>n),最好时间复杂度O(n),最坏时间复杂度O(n</em>n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line">public class Sort &#123;</div><div class="line">	//冒泡排序</div><div class="line">	public static void BubbleSort(int[] data)</div><div class="line">    &#123;</div><div class="line">        for (int i = 0; i &lt;= data.length-1; i++)</div><div class="line">        &#123;</div><div class="line">            for (int j = data.length - 2; j &gt;= i; j--)</div><div class="line">            &#123;</div><div class="line">                if (data[j]&gt;data[j+1])</div><div class="line">                &#123;</div><div class="line">                    swap(data,j,j+1);</div><div class="line">                &#125;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">	public static void swap(int[] data,int i,int j)&#123;</div><div class="line">		int temp = data[j];</div><div class="line">        data[j] = data[i];</div><div class="line">        data[i] = temp;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
+<h2 id="简单选择排序"><a href="#简单选择排序" class="headerlink" title="简单选择排序"></a>简单选择排序</h2><p>平均时间复杂度为O(n<em>n),最好时间复杂度O（n</em>n），最坏时间复杂度O（n*n）,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static void SelectSort(int[] data)</div><div class="line">&#123;</div><div class="line">	for(int i=0;i&lt;data.length;i++)</div><div class="line">	&#123;</div><div class="line">		int min = i;</div><div class="line">		for(int j=i+1;j&lt;data.length;j++)</div><div class="line">		&#123;</div><div class="line">			if(data[min]&gt;data[j])</div><div class="line">				min = j;</div><div class="line">		&#125;</div><div class="line">		if(i!=min)</div><div class="line">			swap(data,i,min);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="直接插入排序"><a href="#直接插入排序" class="headerlink" title="直接插入排序"></a>直接插入排序</h2><p>平均时间复杂度O(n<em>n)，最好时间复杂度O(n)，最坏时间复杂度O(n</em>n),</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">public static void InsertSort(int[] data)</div><div class="line">&#123;</div><div class="line">	for(int i =1;i&lt;data.length;i++)</div><div class="line">	&#123;</div><div class="line">		for(int j=i-1;j&gt;=0 &amp;&amp; data[j]&gt;data[j+1];j--)</div><div class="line">		&#123;</div><div class="line">			swap(data,j,j+1);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="希尔排序"><a href="#希尔排序" class="headerlink" title="希尔排序"></a>希尔排序</h2><p>平均时间复杂度O(nlogn)~O(n*n)，最好时间复杂度O(n^1.3)，最坏时间复杂度O(n^2),</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public static void ShellSort(int[] data)</div><div class="line">&#123;</div><div class="line">	int len = data.length;</div><div class="line">	for(int gap=len/2;gap&gt;0;gap/=2)</div><div class="line">	&#123;</div><div class="line">		for(int i=gap;i&lt;len;i++)</div><div class="line">		&#123;</div><div class="line">			for(int j=i-gap;j&gt;=0&amp;&amp;data[j]&gt;data[j+gap];j-=gap)</div><div class="line">			&#123;</div><div class="line">				swap(data,j,j+gap);</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="堆排序"><a href="#堆排序" class="headerlink" title="堆排序"></a>堆排序</h2><p>平均时间复杂度O(nlogn),最好时间复杂度O(nlogn)，最坏时间复杂度O(nlogn)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public static void HeapSort(int[] data)&#123;</div><div class="line">	int len = data.length;</div><div class="line">	for(int i=len/2-1;i&gt;=0;i--)</div><div class="line">		HeapAdjust(data,i,len-1);</div><div class="line">	for(int i=len-1;i&gt;0;i--)</div><div class="line">	&#123;</div><div class="line">		swap(data,0,i); //将堆顶记录和最后一个记录交换</div><div class="line">		HeapAdjust(data,0,i-1); //重新构建大顶堆</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="归并排序"><a href="#归并排序" class="headerlink" title="归并排序"></a>归并排序</h2><p>平均时间复杂度O(nlogn),最好时间复杂度O(nlogn)，最坏时间复杂度O(nlogn)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">public static void merge_sort(int[] arr) &#123;</div><div class="line">	int len = arr.length;</div><div class="line">	int[] result = new int[len];</div><div class="line">	merge_sort_recursive(arr, result, 0, len - 1);</div><div class="line">&#125;</div><div class="line"></div><div class="line">public static void merge_sort_recursive(int[] arr, int[] result, int start, int end) &#123;</div><div class="line">	if (start &gt;= end)</div><div class="line">		return;</div><div class="line">	int len = end - start, mid = (len &gt;&gt; 1) + start;</div><div class="line">	int start1 = start, end1 = mid;</div><div class="line">	int start2 = mid + 1, end2 = end;</div><div class="line">	merge_sort_recursive(arr, result, start1, end1);</div><div class="line">	merge_sort_recursive(arr, result, start2, end2);</div><div class="line">	int k = start;</div><div class="line">	while (start1 &lt;= end1 &amp;&amp; start2 &lt;= end2)</div><div class="line">		result[k++] = arr[start1] &lt; arr[start2] ? arr[start1++] : arr[start2++];</div><div class="line">	while (start1 &lt;= end1)</div><div class="line">		result[k++] = arr[start1++];</div><div class="line">	while (start2 &lt;= end2)</div><div class="line">		result[k++] = arr[start2++];</div><div class="line">	for (k = start; k &lt;= end; k++)</div><div class="line">		arr[k] = result[k];</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="快速排序"><a href="#快速排序" class="headerlink" title="快速排序"></a>快速排序</h2><p>平均时间复杂度O(nlogn),最好时间复杂度O(nlogn)，最坏时间复杂度O(n*n)</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">public static void QuickSort(int[] data)&#123;</div><div class="line">		QSort(data,0,data.length-1);</div><div class="line">	&#125;</div><div class="line">	public static void QSort(int[] data,int low,int high)&#123;</div><div class="line">		if(low&lt;high)&#123;</div><div class="line">			int pivot=Partition(data,low,high);//算出枢轴</div><div class="line">			QSort(data,low,pivot-1);</div><div class="line">			QSort(data,pivot+1,high);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">	public static int Partition(int[] data,int low,int high)&#123;</div><div class="line">		int pivotkey = data[low];</div><div class="line">		while(low&lt;high)&#123;</div><div class="line">			while(low&lt;high&amp;&amp;data[high]&gt;=pivotkey)</div><div class="line">				high--;</div><div class="line">			swap(data,low,high);</div><div class="line">			while(low&lt;high&amp;&amp;data[low]&lt;=pivotkey)</div><div class="line">				low++;</div><div class="line">			swap(data,low,high);</div><div class="line">		&#125;</div><div class="line">		return low;</div><div class="line">	&#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -585,7 +357,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/缓存算法/" rel="tag">#缓存算法</a>
+            <a href="/tags/数据结构/" rel="tag">#数据结构</a>
           
         </div>
       
@@ -594,17 +366,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/06/06/Hexo利用swiftype为landscape-plus添加站内搜索/" rel="next" title="利用swiftype为Hexo主题为landscape-plus添加站内搜索">
-                <i class="fa fa-chevron-left"></i> 利用swiftype为Hexo主题为landscape-plus添加站内搜索
+              <a href="/2016/08/21/Sublime-Text-3快速生成HTML头部信息/" rel="next" title="Sublime Text 3快速生成HTML头部信息">
+                <i class="fa fa-chevron-left"></i> Sublime Text 3快速生成HTML头部信息
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/08/17/Hexo的SEO优化/" rel="prev" title="Hexo的SEO优化">
-                Hexo的SEO优化 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -653,8 +421,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/06/14/页面调度算法详解/"
-           data-title="页面调度算法详解" data-url="http://benja.info/2016/06/14/页面调度算法详解/">
+      <div class="ds-thread" data-thread-key="2016/09/26/排序算法/"
+           data-title="排序算法" data-url="http://benja.info/2016/09/26/排序算法/">
       </div>
     
   </div>
@@ -774,7 +542,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#LFU（Least-frequently-used）最少使用算法"><span class="nav-number">1.</span> <span class="nav-text">LFU（Least frequently used）最少使用算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#LRU-Least-recently-used-最近最少使用算法"><span class="nav-number">2.</span> <span class="nav-text">LRU(Least recently used) 最近最少使用算法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FIFO（First-in，first-out）先进先出算法"><span class="nav-number">3.</span> <span class="nav-text">FIFO（First-in，first-out）先进先出算法</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#冒泡排序"><span class="nav-number">1.</span> <span class="nav-text">冒泡排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#简单选择排序"><span class="nav-number">2.</span> <span class="nav-text">简单选择排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#直接插入排序"><span class="nav-number">3.</span> <span class="nav-text">直接插入排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#希尔排序"><span class="nav-number">4.</span> <span class="nav-text">希尔排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#堆排序"><span class="nav-number">5.</span> <span class="nav-text">堆排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#归并排序"><span class="nav-number">6.</span> <span class="nav-text">归并排序</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#快速排序"><span class="nav-number">7.</span> <span class="nav-text">快速排序</span></a></li></ol></div>
             
           </div>
         </section>
