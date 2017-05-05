@@ -1,4 +1,4 @@
-#欢迎访问[我的主页](http://benja.info/)
+#欢迎访问[我的主页](http://benjaminxi.github.io/)
 ##更新日志
 ###2016.6.5
 * 添加[多说评论](http://duoshuo.com/)<br/>
